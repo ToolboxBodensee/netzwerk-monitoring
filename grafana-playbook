@@ -1,0 +1,6 @@
+---
+
+- hosts: monitoring
+  roles:
+    - { role: grafana,         tags: [grafana] }
+#    - { role: rally,           tags: [grafana] }

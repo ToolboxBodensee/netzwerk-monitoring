@@ -1,0 +1,18 @@
+# managed by ansible
+# local entries
+127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4 {{ ansible_hostname }}
+::1	  localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+# inventory entries
+{% for node in groups['all'] %}
+{% if hostvars[node]['ansible_' + net.map.ctrl | regex_replace('-', '_')] is defined and hostvars[node]['ansible_nodename'] != ansible_nodename %}
+{{    hostvars[node]['ansible_' + net.map.ctrl | regex_replace('-', '_')]['ipv4']['address'] }} {{ hostvars[node]['ansible_hostname'] }}
+{% endif %}
+{% endfor %}
+
+# manual entries
+{% if hosts.entries is defined %}
+{% for entry in hosts.entries %}
+{{ entry }}
+{% endfor %}
+{% endif %}

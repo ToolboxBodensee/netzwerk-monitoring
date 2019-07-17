@@ -1,0 +1,7 @@
+---
+hosts:
+  name:    "hosts"
+  version: "1.0.0"
+
+  templates:
+  - name: "/etc/hosts"

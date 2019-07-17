@@ -1,0 +1,2 @@
+---
+- include: ../../common/tasks/templates.yml role={{ hosts }}

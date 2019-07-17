@@ -1,0 +1,6 @@
+---
+hosts:
+  # optional manual entries
+  entries:
+  - "127.0.0.2 foo"
+  - "127.0.0.3 bar"
