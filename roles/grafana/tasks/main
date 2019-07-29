@@ -1,0 +1,36 @@
+---
+
+- name: Grafana | Copy yum.repos config
+  become: true
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: 0644
+  with_items:
+     - { src: 'etc/yum.repos.d/grafana.repo', dest: '/etc/yum.repos.d/grafana.repo' }
+
+- name: Grafana| Installing packages
+  become: true
+  yum:
+    pkg="{{item}}"
+    state="present"
+  with_items:
+    - "grafana"
+  tags:
+    - install
+
+- name:  Grafana | Copy grafana files
+  become: true
+  template: src="{{item.src}}" dest="{{item.dest}}" mode="{{item.mode}}"
+  with_items:
+    - { src: "etc/logrotate.d/grafana", dest: "/etc/logrotate.d/grafana", mode: "0644" }
+  notify: restart_grafana
+
+- name: Grafana | Start services
+  become: true
+  service:
+    name: "{{item}}"
+    state: started
+    enabled: yes
+  with_items:
+    - "grafana-server"

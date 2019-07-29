@@ -1,0 +1,12 @@
+---
+
+- name: restart_nginx
+  become: true
+  command: /bin/systemctl restart  nginx.service
+
+- name: restart_grafana
+  become: true
+  command: /bin/systemctl restart  grafana-server.service
+
+- name: reload systemctl
+  command: systemctl daemon-reload

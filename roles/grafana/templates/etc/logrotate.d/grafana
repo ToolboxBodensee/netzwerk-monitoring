@@ -1,0 +1,6 @@
+/var/log/grafana/*.log {
+    rotate 3
+    missingok
+    notifempty
+    daily
+}
