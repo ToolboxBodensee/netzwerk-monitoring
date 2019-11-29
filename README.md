@@ -1,4 +1,7 @@
 # netzwerk-monitoring
+
+**Entwicklung nur auf [GitLab](https://gitlab.com/ToolboxBodensee/toolbox-infrastructure/netzwerk-monitoring). Auf GitHub befindet sich lediglich ein Mirror**
+
 netzwerk-monitoring
 
 Ein erstes Netzwerk-Monitoring, noch ohne Ansible-Deployment, läuft auf dem Server os-2.tbbs.me.
